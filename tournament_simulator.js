@@ -1,0 +1,7 @@
+
+
+competitor = {
+    name: "", 
+    rating: "", 
+    seed: ""
+}
