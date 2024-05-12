@@ -1,0 +1,1 @@
+Used to determine who the [[competitors]] initial opponent in the [[heats stage]] will be.

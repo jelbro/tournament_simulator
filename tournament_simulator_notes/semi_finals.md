@@ -1,0 +1,1 @@
+Winner's of the [[quarter_finals]] will play each other in the semi_finals.

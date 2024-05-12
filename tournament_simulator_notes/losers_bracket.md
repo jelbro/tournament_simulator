@@ -1,0 +1,1 @@
+losers of the [[semi_finals]] will compete for 3rd and 4th place.

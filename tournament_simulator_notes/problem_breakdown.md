@@ -7,3 +7,4 @@
 - [ ] Create [[losers_bracket]]
 - [ ] Create [[finals]]
 - [ ] Display [[top_four]]
+- [ ] Calculate new [[rating]]

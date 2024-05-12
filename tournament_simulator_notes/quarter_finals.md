@@ -1,0 +1,1 @@
+Winners of the [[heats stage]] will move to the quarter finals, winner of bracket 1 will face winner of bracket 2 etc.

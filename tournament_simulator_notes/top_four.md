@@ -1,0 +1,1 @@
+Take the results of the [[finals]] and [[losers_bracket]] to determine 1st, 2nd, 3rd and 4th place.
