@@ -128,7 +128,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       },
       {
         "id": "7b77b3951f14837a",
@@ -208,7 +208,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "competitors.md",
+                "file": "problem_breakdown.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -225,7 +225,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "competitors.md",
+                "file": "problem_breakdown.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -248,7 +248,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "competitors.md"
+                "file": "problem_breakdown.md"
               }
             }
           }
@@ -269,9 +269,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "52243d2990e53ad7",
+  "active": "7efac47ed4baa5f1",
   "lastOpenFiles": [
-    "problem_breakdown.md",
     "losers_bracket.md",
     "finals.md",
     "heats stage.md",
@@ -279,8 +278,9 @@
     "rating.md",
     "quarter_finals.md",
     "top_four.md",
-    "semi_finals.md",
     "competitors.md",
+    "problem_breakdown.md",
+    "semi_finals.md",
     "Pasted image 20240512171050.png",
     "Welcome.md"
   ]
