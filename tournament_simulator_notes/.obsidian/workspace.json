@@ -11,8 +11,12 @@
             "id": "74b37503e7560aef",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "problem_breakdown.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -95,6 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "problem_breakdown.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,6 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "problem_breakdown.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Welcome.md"
+                "file": "problem_breakdown.md"
               }
             }
           }
@@ -154,8 +160,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8acc17140d77ce32",
+  "active": "74b37503e7560aef",
   "lastOpenFiles": [
-    "Welcome.md"
+    "Pasted image 20240512171050.png",
+    "Welcome.md",
+    "problem_breakdown.md"
   ]
 }
