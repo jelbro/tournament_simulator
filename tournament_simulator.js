@@ -31,14 +31,12 @@ function getRandomInt(min, max) {
 }
 
 function create_competitors(name_database) {
-	let random_name_number;
-	let random_rating_number;
 	for (let i = 0; i < 16; i++) {
-		random_name_number = Math.random() * 16 + 1;
-		random_rating_number = Math.random() * 2000 + 1;
+		random_name_number = getRandomInt(0, 15);
+		random_rating_number = getRandomInt(0, 2000);
 		competitors[i] = new competitor(
-			name_database[random_name_number],
-			random_rating_number,
+			name_database[getRandomInt(0, 15)],
+			getRandomInt(0, 2000),
 			null
 		);
 	}
