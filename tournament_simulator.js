@@ -52,7 +52,7 @@ function competitor(name, rating, seed) {
 	this.seed = seed;
 }
 
-function getRandomInt(min, max) {
+function get_random_int(min, max) {
 	const MIN_CEILED = Math.ceil(min);
 	const MAX_FLOORED = Math.floor(max);
 	return Math.floor(Math.random() * (MAX_FLOORED - MIN_CEILED) + MIN_CEILED);
@@ -61,11 +61,24 @@ function getRandomInt(min, max) {
 function create_competitors(name_database) {
 	for (let i = 0; i < 16; i++) {
 		competitors[i] = new competitor(
-			name_database[getRandomInt(0, 15)] + letters[getRandomInt(0, 25)],
-			getRandomInt(0, 2000),
+			name_database[get_random_int(0, 15)] + letters[get_random_int(0, 25)],
+			get_random_int(0, 2000),
 			null
 		);
 	}
+}
+
+function get_player_seed(competitors) {
+	let ascending_ordered_players = competitors.slice();
+	ascending_ordered_players.sort(function (a, b) {
+		return a - b;
+	});
+
+	let descending_ordered_players = competitor.slice();
+	descending_ordered_players.sort(function (a, b) {
+		return b - a;
+	});
+	// TODO: Write code to give player's their seed number
 }
 
 create_competitors(name_database);
