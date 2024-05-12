@@ -60,10 +60,8 @@ function getRandomInt(min, max) {
 
 function create_competitors(name_database) {
 	for (let i = 0; i < 16; i++) {
-		random_name_number = getRandomInt(0, 15);
-		random_rating_number = getRandomInt(0, 2000);
 		competitors[i] = new competitor(
-			name_database[getRandomInt(0, 15)],
+			name_database[getRandomInt(0, 15)] + letters[getRandomInt(0, 25)],
 			getRandomInt(0, 2000),
 			null
 		);
