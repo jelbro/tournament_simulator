@@ -62,7 +62,11 @@ function generate_name(name_database, letters, competitors) {
 	while (true) {
 		let generated_name =
 			name_database[get_random_int(0, 15)] + letters[get_random_int(0, 25)];
-		if (check_for_duplicate_name(generated_name, competitors) == true) break;
+		if (check_for_duplicate_name(generated_name, competitors) == true) {
+			break;
+		} else {
+			false;
+		}
 	}
 	return generated_name;
 }
@@ -71,6 +75,8 @@ function check_for_duplicate_name(generated_name, competitors) {
 	for (player of competitors) {
 		if (generated_name == player.name) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 }
