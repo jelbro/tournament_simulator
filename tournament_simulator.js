@@ -157,8 +157,18 @@ function display_heats_stage(heats) {
 	}
 }
 
-function get_player_roll(seeded_players) {
-	return (player_roll = get_random_int(0, 100) + seeded_players.rating / 100);
+function get_player_roll(heats) {
+	for (let index = 0; index < heats.length; index++) {
+		heats[index].roll =
+			get_random_int(0, 100) + Math.floor(heats[index].rating / 100);
+	}
+}
+
+function determine_winner(heats) {
+	get_player_roll(heats);
+	for (player of heats) {
+		console.log(player);
+	}
 }
 
 create_competitors(name_database);
@@ -169,3 +179,4 @@ for (player of seeded_players) {
 }
 console.log('\n');
 create_heats_stage(seeded_players);
+determine_winner(heats);
