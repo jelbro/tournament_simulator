@@ -47,7 +47,9 @@ let name_database = [
 	competitors = [],
 	seeded_players = [],
 	heats = [],
-	quarters = [];
+	quarters = [],
+	semis = [],
+	finals = [];
 
 function competitor(name, rating, seed) {
 	this.name = name;
@@ -105,10 +107,6 @@ function get_player_seed(input_array) {
 	ascending_ordered_players.sort(function (high, low) {
 		return high.rating - low.rating;
 	});
-	console.log('\n');
-	for (player of ascending_ordered_players) {
-		console.log(player);
-	}
 	let seed_incrementer = 1;
 	for (let index = 0; index < 8; index++) {
 		seeded_array.push({
@@ -128,32 +126,35 @@ function get_player_seed(input_array) {
 	return seeded_array;
 }
 
-function create_heats_stage(seeded_players) {
-	for (let index = 0; index < 16; index += 2) {
-		heats.push({
-			name: seeded_players[index].name,
-			rating: seeded_players[index].rating,
-			seed: seeded_players[index].seed,
+function create_tournament_stage(seeded_array, round_name) {
+	let output_array = [];
+	console.log(round_name + ':\n');
+	for (let index = 0; index < seeded_array.length; index += 2) {
+		output_array.push({
+			name: seeded_array[index].name,
+			rating: seeded_array[index].rating,
+			seed: seeded_array[index].seed,
 		});
-		heats.push({
-			name: seeded_players[index + 1].name,
-			rating: seeded_players[index + 1].rating,
-			seed: seeded_players[index + 1].seed,
+		output_array.push({
+			name: seeded_array[index + 1].name,
+			rating: seeded_array[index + 1].rating,
+			seed: seeded_array[index + 1].seed,
 		});
 	}
-	display_heats_stage(heats);
+	display_heats_stage(output_array);
+	return output_array;
 }
 
-function display_heats_stage(heats) {
+function display_heats_stage(input_array) {
 	let round_number = 1;
-	for (let heat = 0; heat < heats.length; heat += 2) {
+	for (let heat = 0; heat < input_array.length; heat += 2) {
 		console.log(
 			'Bracket ' +
 				round_number +
 				': ' +
-				heats[heat].name +
+				input_array[heat].name +
 				' vs ' +
-				heats[heat + 1].name
+				input_array[heat + 1].name
 		);
 		round_number++;
 	}
@@ -166,7 +167,7 @@ function get_player_roll(input_array) {
 	}
 }
 
-function determine_winner(input_array) {
+function determine_winner(input_array, finals) {
 	let output_array = [];
 	get_player_roll(input_array);
 	let round_number = 1;
@@ -219,9 +220,13 @@ for (player of seeded_players) {
 	console.log(player);
 }
 console.log('\n');
-create_heats_stage(seeded_players);
+heats = create_tournament_stage(seeded_players, 'Quarter Finals');
 console.log('\n');
 quarters = determine_winner(heats);
-for (player of quarters) {
-	console.log(player);
-}
+console.log('\n');
+quarters = create_tournament_stage(quarters, 'Semi Finals');
+console.log('\n');
+semis = determine_winner(quarters);
+console.log('\n');
+semis = create_tournament_stage(semis, 'Finals');
+finals = determine_winner(semis, true);
