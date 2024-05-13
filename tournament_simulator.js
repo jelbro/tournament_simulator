@@ -65,10 +65,9 @@ function generate_name(name_database, letters, competitors) {
 		if (check_for_duplicate_name(generated_name, competitors) == true) {
 			break;
 		} else {
-			false;
+			return generated_name;
 		}
 	}
-	return generated_name;
 }
 
 function check_for_duplicate_name(generated_name, competitors) {
