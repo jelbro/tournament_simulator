@@ -158,45 +158,57 @@ function display_heats_stage(heats) {
 	}
 }
 
-function get_player_roll(heats) {
-	for (let index = 0; index < heats.length; index++) {
-		heats[index].roll =
-			get_random_int(0, 100) + Math.floor(heats[index].rating / 100);
+function get_player_roll(input_array) {
+	for (let index = 0; index < input_array.length; index++) {
+		input_array[index].roll =
+			get_random_int(0, 100) + Math.floor(input_array[index].rating / 100);
 	}
 }
 
-function determine_winner(heats) {
-	get_player_roll(heats);
+function determine_winner(input_array) {
+	let output_array = [];
+	get_player_roll(input_array);
 	let round_number = 1;
-	for (let index = 0; index < heats.length; index += 2) {
-		if (heats[index].roll > heats[index + 1].roll) {
+	for (let index = 0; index < input_array.length; index += 2) {
+		if (input_array[index].roll > input_array[index + 1].roll) {
 			console.log(
 				'The winner of bracket ' +
 					round_number +
 					' is ' +
-					heats[index].name +
+					input_array[index].name +
 					'! With a roll of ' +
-					heats[index].roll +
+					input_array[index].roll +
 					' vs ' +
-					heats[index + 1].name +
+					input_array[index + 1].name +
 					"'s roll of " +
-					heats[index + 1].roll
+					input_array[index + 1].roll
 			);
+			output_array.push({
+				name: input_array[index].name,
+				rating: input_array[index].rating,
+				seed: input_array[index].seed,
+			});
 		} else {
 			console.log(
 				'A true underdog story! The winner of bracket ' +
 					round_number +
 					' is ' +
-					heats[index + 1].name +
+					input_array[index + 1].name +
 					'! With a roll of ' +
-					heats[index + 1].roll +
+					input_array[index + 1].roll +
 					' vs ' +
-					heats[index].name +
+					input_array[index].name +
 					"'s roll of " +
-					heats[index].roll
+					input_array[index].roll
 			);
+			output_array.push({
+				name: input_array[index + 1].name,
+				rating: input_array[index + 1].rating,
+				seed: input_array[index + 1].seed,
+			});
 		}
 	}
+	return output_array;
 }
 
 create_competitors(name_database);
@@ -208,4 +220,7 @@ for (player of seeded_players) {
 console.log('\n');
 create_heats_stage(seeded_players);
 console.log('\n');
-determine_winner(heats);
+quarters = determine_winner(heats);
+for (player of quarters) {
+	console.log(player);
+}
