@@ -127,7 +127,6 @@ function get_player_seed(competitors) {
 }
 
 function create_heats_stage(seeded_players) {
-	// Take in seeded players
 	for (let index = 0; index < 16; index += 2) {
 		heats.push({
 			name: seeded_players[index].name,
@@ -141,7 +140,6 @@ function create_heats_stage(seeded_players) {
 		});
 	}
 	display_heats_stage(heats);
-	//return heat 1: x vs y etc
 }
 
 function display_heats_stage(heats) {
@@ -157,6 +155,10 @@ function display_heats_stage(heats) {
 		);
 		round_number++;
 	}
+}
+
+function get_player_roll(seeded_players) {
+	return (player_roll = get_random_int(0, 100) + seeded_players.rating / 100);
 }
 
 create_competitors(name_database);
