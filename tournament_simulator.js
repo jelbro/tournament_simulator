@@ -92,15 +92,21 @@ function create_competitors(name_database) {
 
 function get_player_seed(competitors) {
 	let ascending_ordered_players = competitors.slice();
-	ascending_ordered_players.sort(function (a, b) {
-		return a - b;
+	ascending_ordered_players.sort(function (high, low) {
+		return high - low;
 	});
 
 	let descending_ordered_players = competitor.slice();
-	descending_ordered_players.sort(function (a, b) {
-		return b - a;
+	descending_ordered_players.sort(function (high, low) {
+		return low - high;
 	});
-	// TODO: Write code to give player's their seed number
+
+	for (let seed_number = 0; seed_number < 16; seed_number++) {
+		for (player of competitors) {
+			for (asc_player of ascending_ordered_players) {
+			}
+		}
+	}
 }
 
 create_competitors(name_database);

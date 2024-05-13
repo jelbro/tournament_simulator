@@ -44,6 +44,30 @@
             }
           },
           {
+            "id": "78f698fb1061380e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "heats stage.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "8485d938f6049dc8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "seed.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "52243d2990e53ad7",
             "type": "leaf",
             "state": {
@@ -128,7 +152,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       },
       {
         "id": "7b77b3951f14837a",
@@ -208,7 +232,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "problem_breakdown.md",
+                "file": "seed.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -225,7 +249,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "problem_breakdown.md",
+                "file": "seed.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -248,7 +272,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "problem_breakdown.md"
+                "file": "seed.md"
               }
             }
           }
@@ -269,17 +293,17 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7efac47ed4baa5f1",
+  "active": "8485d938f6049dc8",
   "lastOpenFiles": [
+    "heats stage.md",
+    "problem_breakdown.md",
     "losers_bracket.md",
     "finals.md",
-    "heats stage.md",
     "seed.md",
     "rating.md",
     "quarter_finals.md",
     "top_four.md",
     "competitors.md",
-    "problem_breakdown.md",
     "semi_finals.md",
     "Pasted image 20240512171050.png",
     "Welcome.md"

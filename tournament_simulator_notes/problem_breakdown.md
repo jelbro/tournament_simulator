@@ -1,6 +1,6 @@
 ![[Pasted image 20240512171050.png]]
 - [x] Take in [[competitors]]
-- [ ] Organise [[competitors]] by [[rating]]
+- [x] Organise [[competitors]] by [[rating]]
 - [ ] Create [[heats stage]]
 - [ ] Create [[quarter_finals]]
 - [ ] Create [[semi_finals]] 
