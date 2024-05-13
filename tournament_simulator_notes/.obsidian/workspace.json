@@ -44,24 +44,12 @@
             }
           },
           {
-            "id": "78f698fb1061380e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "heats stage.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "8485d938f6049dc8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "seed.md",
+                "file": "problem_breakdown.md",
                 "mode": "source",
                 "source": false
               }
@@ -152,7 +140,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       },
       {
         "id": "7b77b3951f14837a",
@@ -232,7 +220,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "seed.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -249,7 +236,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "seed.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -271,9 +257,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "seed.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -293,13 +277,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8485d938f6049dc8",
+  "active": "9b8a9f6cd0e99aa0",
   "lastOpenFiles": [
-    "heats stage.md",
     "problem_breakdown.md",
+    "seed.md",
+    "heats stage.md",
     "losers_bracket.md",
     "finals.md",
-    "seed.md",
     "rating.md",
     "quarter_finals.md",
     "top_four.md",

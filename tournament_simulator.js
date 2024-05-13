@@ -45,7 +45,8 @@ let name_database = [
 		' Z',
 	],
 	competitors = [],
-	seeded_players = [];
+	seeded_players = [],
+	heats = [];
 
 function competitor(name, rating, seed) {
 	this.name = name;
@@ -125,13 +126,44 @@ function get_player_seed(competitors) {
 	return seeded_players;
 }
 
-create_competitors(name_database);
-for (player of competitors) {
-	console.log(player);
+function create_heats_stage(seeded_players) {
+	// Take in seeded players
+	for (let index = 0; index < 16; index += 2) {
+		heats.push({
+			name: seeded_players[index].name,
+			rating: seeded_players[index].rating,
+			seed: seeded_players[index].seed,
+		});
+		heats.push({
+			name: seeded_players[index + 1].name,
+			rating: seeded_players[index + 1].rating,
+			seed: seeded_players[index + 1].seed,
+		});
+	}
+	display_heats_stage(heats);
+	//return heat 1: x vs y etc
 }
 
+function display_heats_stage(heats) {
+	let round_number = 1;
+	for (let heat = 0; heat < heats.length; heat += 2) {
+		console.log(
+			'Bracket ' +
+				round_number +
+				': ' +
+				heats[heat].name +
+				' vs ' +
+				heats[heat + 1].name
+		);
+		round_number++;
+	}
+}
+
+create_competitors(name_database);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
 for (player of seeded_players) {
 	console.log(player);
 }
+console.log('\n');
+create_heats_stage(seeded_players);
