@@ -167,13 +167,10 @@ function get_player_roll(input_array) {
 	}
 }
 
-function determine_winner(input_array, finals) {
+function determine_winner(input_array) {
 	let output_array = [];
 	get_player_roll(input_array);
 	let round_number = 1;
-	if (finals) {
-	}
-
 	for (let index = 0; index < input_array.length; index += 2) {
 		if (input_array[index].roll > input_array[index + 1].roll) {
 			console.log(
@@ -218,6 +215,15 @@ function determine_winner(input_array, finals) {
 	return output_array;
 }
 
+function tournament_results(input_array) {
+	console.log('The final results are in!');
+	for (let position = 0; position < input_array.length; position++) {
+		console.log(
+			'In position ' + (position + 1) + ' ' + input_array[position].name
+		);
+	}
+}
+
 create_competitors(name_database);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
@@ -225,13 +231,16 @@ for (player of seeded_players) {
 	console.log(player);
 }
 console.log('\n');
-heats = create_tournament_stage(seeded_players, 'Quarter Finals');
+heats = create_tournament_stage(seeded_players, 'Heats Stage');
 console.log('\n');
 quarters = determine_winner(heats);
 console.log('\n');
-quarters = create_tournament_stage(quarters, 'Semi Finals');
+quarters = create_tournament_stage(quarters, 'Quarter Finals');
 console.log('\n');
 semis = determine_winner(quarters);
 console.log('\n');
-semis = create_tournament_stage(semis, 'Finals');
-finals = determine_winner(semis, true);
+semis = create_tournament_stage(semis, 'Semi Finals');
+console.log('\n');
+finals = determine_winner(semis);
+console.log('\n');
+tournament_results(finals);
