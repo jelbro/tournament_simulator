@@ -46,7 +46,8 @@ let name_database = [
 	],
 	competitors = [],
 	seeded_players = [],
-	heats = [];
+	heats = [],
+	quarters = [];
 
 function competitor(name, rating, seed) {
 	this.name = name;
@@ -110,14 +111,14 @@ function get_player_seed(competitors) {
 	let seed_incrementer = 1;
 	for (let index = 0; index < 8; index++) {
 		seeded_players.push({
-			name: ascending_ordered_players[index].name,
-			rating: ascending_ordered_players[index].rating,
+			name: descending_ordered_players[index].name,
+			rating: descending_ordered_players[index].rating,
 			seed: seed_incrementer,
 		});
 		seed_incrementer += 1;
 		seeded_players.push({
-			name: descending_ordered_players[index].name,
-			rating: descending_ordered_players[index].rating,
+			name: ascending_ordered_players[index].name,
+			rating: ascending_ordered_players[index].rating,
 			seed: seed_incrementer,
 		});
 		seed_incrementer += 1;
@@ -166,8 +167,35 @@ function get_player_roll(heats) {
 
 function determine_winner(heats) {
 	get_player_roll(heats);
-	for (player of heats) {
-		console.log(player);
+	let round_number = 1;
+	for (let index = 0; index < heats.length; index += 2) {
+		if (heats[index].roll > heats[index + 1].roll) {
+			console.log(
+				'The winner of bracket ' +
+					round_number +
+					' is ' +
+					heats[index].name +
+					'! With a roll of ' +
+					heats[index].roll +
+					' vs ' +
+					heats[index + 1].name +
+					"'s roll of " +
+					heats[index + 1].roll
+			);
+		} else {
+			console.log(
+				'A true underdog story! The winner of bracket ' +
+					round_number +
+					' is ' +
+					heats[index + 1].name +
+					'! With a roll of ' +
+					heats[index + 1].roll +
+					' vs ' +
+					heats[index].name +
+					"'s roll of " +
+					heats[index].roll
+			);
+		}
 	}
 }
 
@@ -179,4 +207,5 @@ for (player of seeded_players) {
 }
 console.log('\n');
 create_heats_stage(seeded_players);
+console.log('\n');
 determine_winner(heats);
