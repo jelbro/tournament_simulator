@@ -171,6 +171,9 @@ function determine_winner(input_array, finals) {
 	let output_array = [];
 	get_player_roll(input_array);
 	let round_number = 1;
+	if (finals) {
+	}
+
 	for (let index = 0; index < input_array.length; index += 2) {
 		if (input_array[index].roll > input_array[index + 1].roll) {
 			console.log(
@@ -190,6 +193,7 @@ function determine_winner(input_array, finals) {
 				rating: input_array[index].rating,
 				seed: input_array[index].seed,
 			});
+			round_number++;
 		} else {
 			console.log(
 				'A true underdog story! The winner of bracket ' +
@@ -208,6 +212,7 @@ function determine_winner(input_array, finals) {
 				rating: input_array[index + 1].rating,
 				seed: input_array[index + 1].seed,
 			});
+			round_number++;
 		}
 	}
 	return output_array;
