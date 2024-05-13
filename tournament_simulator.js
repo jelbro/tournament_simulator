@@ -44,7 +44,8 @@ let name_database = [
 		' Y',
 		' Z',
 	],
-	competitors = [];
+	competitors = [],
+	seeded_players = [];
 
 function competitor(name, rating, seed) {
 	this.name = name;
@@ -78,6 +79,7 @@ function check_for_duplicate_name(generated_name, competitors) {
 			return false;
 		}
 	}
+	return false;
 }
 
 function create_competitors(name_database) {
@@ -91,25 +93,45 @@ function create_competitors(name_database) {
 }
 
 function get_player_seed(competitors) {
+	let descending_ordered_players = competitors.slice();
+	descending_ordered_players.sort(function (high, low) {
+		return low.rating - high.rating;
+	});
+
 	let ascending_ordered_players = competitors.slice();
 	ascending_ordered_players.sort(function (high, low) {
-		return high - low;
+		return high.rating - low.rating;
 	});
-
-	let descending_ordered_players = competitor.slice();
-	descending_ordered_players.sort(function (high, low) {
-		return low - high;
-	});
-
-	for (let seed_number = 0; seed_number < 16; seed_number++) {
-		for (player of competitors) {
-			for (asc_player of ascending_ordered_players) {
-			}
-		}
+	console.log('\n');
+	for (player of ascending_ordered_players) {
+		console.log(player);
 	}
+	let seed_incrementer = 1;
+	for (let index = 0; index < 8; index++) {
+		seeded_players.push({
+			name: ascending_ordered_players[index].name,
+			rating: ascending_ordered_players[index].rating,
+			seed: seed_incrementer,
+		});
+		seed_incrementer += 1;
+		seeded_players.push({
+			name: descending_ordered_players[index].name,
+			rating: descending_ordered_players[index].rating,
+			seed: seed_incrementer,
+		});
+		seed_incrementer += 1;
+	}
+
+	return seeded_players;
 }
 
 create_competitors(name_database);
 for (player of competitors) {
+	console.log(player);
+}
+
+seeded_players = get_player_seed(competitors);
+console.log('\n');
+for (player of seeded_players) {
 	console.log(player);
 }
