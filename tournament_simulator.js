@@ -94,13 +94,14 @@ function create_competitors(name_database) {
 	}
 }
 
-function get_player_seed(competitors) {
-	let descending_ordered_players = competitors.slice();
+function get_player_seed(input_array) {
+	let seeded_array = [];
+	let descending_ordered_players = input_array.slice();
 	descending_ordered_players.sort(function (high, low) {
 		return low.rating - high.rating;
 	});
 
-	let ascending_ordered_players = competitors.slice();
+	let ascending_ordered_players = input_array.slice();
 	ascending_ordered_players.sort(function (high, low) {
 		return high.rating - low.rating;
 	});
@@ -110,13 +111,13 @@ function get_player_seed(competitors) {
 	}
 	let seed_incrementer = 1;
 	for (let index = 0; index < 8; index++) {
-		seeded_players.push({
+		seeded_array.push({
 			name: descending_ordered_players[index].name,
 			rating: descending_ordered_players[index].rating,
 			seed: seed_incrementer,
 		});
 		seed_incrementer += 1;
-		seeded_players.push({
+		seeded_array.push({
 			name: ascending_ordered_players[index].name,
 			rating: ascending_ordered_players[index].rating,
 			seed: seed_incrementer,
@@ -124,7 +125,7 @@ function get_player_seed(competitors) {
 		seed_incrementer += 1;
 	}
 
-	return seeded_players;
+	return seeded_array;
 }
 
 function create_heats_stage(seeded_players) {
