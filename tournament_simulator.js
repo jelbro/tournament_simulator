@@ -87,13 +87,15 @@ function check_for_duplicate_name(generated_name, competitors) {
 }
 
 function create_competitors(name_database) {
+	let output_array = [];
 	for (let i = 0; i < 16; i++) {
-		competitors[i] = new competitor(
+		output_array[i] = new competitor(
 			generate_name(name_database, letters, competitors),
 			get_random_int(0, 2000),
 			null
 		);
 	}
+	return output_array;
 }
 
 function get_player_seed(input_array) {
@@ -224,7 +226,7 @@ function tournament_results(input_array) {
 	}
 }
 
-create_competitors(name_database);
+competitors = create_competitors(name_database);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
 for (player of seeded_players) {
