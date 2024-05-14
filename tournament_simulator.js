@@ -75,9 +75,9 @@ function generate_name(name_database, letters, competitors) {
 	}
 }
 
-function check_for_duplicate_name(generated_name, competitors) {
-	for (player of competitors) {
-		if (generated_name == player.name) {
+function check_for_duplicate_name(generated_name, input_array) {
+	for (entry of input_array) {
+		if (generated_name == entry.name) {
 			return true;
 		} else {
 			return false;
