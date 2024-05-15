@@ -63,11 +63,11 @@ function get_random_int(min, max) {
 	return Math.floor(Math.random() * (MAX_FLOORED - MIN_CEILED) + MIN_CEILED);
 }
 
-function generate_name(name_database, letters, competitors) {
+function generate_name(name_database, letters, input_array) {
 	while (true) {
 		let generated_name =
 			name_database[get_random_int(0, 15)] + letters[get_random_int(0, 25)];
-		if (check_for_duplicate_name(generated_name, competitors) == true) {
+		if (check_for_duplicate_name(generated_name, input_array) == true) {
 			break;
 		} else {
 			return generated_name;
