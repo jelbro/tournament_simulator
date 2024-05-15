@@ -143,11 +143,11 @@ function create_tournament_stage(seeded_array, round_name) {
 			seed: seeded_array[index + 1].seed,
 		});
 	}
-	display_heats_stage(output_array);
+	display_stage(output_array);
 	return output_array;
 }
 
-function display_heats_stage(input_array) {
+function display_stage(input_array) {
 	let round_number = 1;
 	for (let heat = 0; heat < input_array.length; heat += 2) {
 		console.log(
