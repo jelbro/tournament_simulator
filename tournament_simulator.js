@@ -100,6 +100,7 @@ function create_competitors(name_database) {
 
 function get_player_seed(input_array) {
 	let seeded_array = [];
+	let seed_incrementer = 1;
 	let descending_ordered_players = input_array.slice();
 	descending_ordered_players.sort(function (high, low) {
 		return low.rating - high.rating;
@@ -109,7 +110,6 @@ function get_player_seed(input_array) {
 	ascending_ordered_players.sort(function (high, low) {
 		return high.rating - low.rating;
 	});
-	let seed_incrementer = 1;
 	for (let index = 0; index < 8; index++) {
 		seeded_array.push({
 			name: descending_ordered_players[index].name,
