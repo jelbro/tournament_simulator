@@ -49,7 +49,10 @@ let name_database = [
 	heats = [],
 	quarters = [],
 	semis = [],
-	finals = [];
+	losers = [],
+	losers_results = [],
+	finals = [],
+	results = [];
 
 function competitor(name, rating, seed) {
 	this.name = name;
@@ -169,7 +172,7 @@ function get_player_roll(input_array) {
 	}
 }
 
-function determine_winner(input_array) {
+function determine_winner(input_array, finals, losers_finals) {
 	let output_array = [];
 	get_player_roll(input_array);
 	let round_number = 1;
@@ -192,6 +195,19 @@ function determine_winner(input_array) {
 				rating: input_array[index].rating,
 				seed: input_array[index].seed,
 			});
+			if (finals) {
+				losers.push({
+					name: input_array[index + 1].name,
+					rating: input_array[index + 1].rating,
+					seed: input_array[index + 1].seed,
+				});
+			} else if (losers_finals) {
+				output_array.push({
+					name: input_array[index + 1].name,
+					rating: input_array[index + 1].rating,
+					seed: input_array[index + 1].seed,
+				});
+			}
 			round_number++;
 		} else {
 			console.log(
@@ -211,6 +227,19 @@ function determine_winner(input_array) {
 				rating: input_array[index + 1].rating,
 				seed: input_array[index + 1].seed,
 			});
+			if (finals) {
+				losers.push({
+					name: input_array[index].name,
+					rating: input_array[index].rating,
+					seed: input_array[index].seed,
+				});
+			} else if (losers_finals) {
+				output_array.push({
+					name: input_array[index].name,
+					rating: input_array[index].rating,
+					seed: input_array[index].seed,
+				});
+			}
 			round_number++;
 		}
 	}
@@ -226,12 +255,19 @@ function tournament_results(input_array) {
 	}
 }
 
+function combine_results(lower_result, higher_result) {
+	output_array = [];
+	for (let result of higher_result) {
+		output_array.push(result);
+	}
+	for (let result of lower_result) {
+		output_array.push(result);
+	}
+	return output_array;
+}
+
 competitors = create_competitors(name_database);
 seeded_players = get_player_seed(competitors);
-console.log('\n');
-for (player of seeded_players) {
-	console.log(player);
-}
 console.log('\n');
 heats = create_tournament_stage(seeded_players, 'Heats Stage');
 console.log('\n');
@@ -243,6 +279,14 @@ semis = determine_winner(quarters);
 console.log('\n');
 semis = create_tournament_stage(semis, 'Semi Finals');
 console.log('\n');
-finals = determine_winner(semis);
+finals = determine_winner(semis, true);
 console.log('\n');
-tournament_results(finals);
+losers = create_tournament_stage(losers, 'Losers Finals');
+losers_results = determine_winner(losers, false, true);
+console.log('\n');
+finals = create_tournament_stage(finals, 'Finals');
+
+results = determine_winner(finals);
+results = combine_results(losers_results, finals);
+console.log('\n');
+tournament_results(results);
