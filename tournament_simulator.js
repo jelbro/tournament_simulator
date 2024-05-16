@@ -285,7 +285,6 @@ losers = create_tournament_stage(losers, 'Losers Finals');
 losers_results = determine_winner(losers, false, true);
 console.log('\n');
 finals = create_tournament_stage(finals, 'Finals');
-
 results = determine_winner(finals);
 results = combine_results(losers_results, finals);
 console.log('\n');
