@@ -1,4 +1,4 @@
-let name_database = [
+let names = [
 		'Isabella',
 		'Maxwell',
 		'Ava',
@@ -16,6 +16,7 @@ let name_database = [
 		'Amelia',
 		'Elijah',
 	],
+	names_test = ['Isabella', 'Maxwell'],
 	letters = [
 		' A',
 		' B',
@@ -44,6 +45,7 @@ let name_database = [
 		' Y',
 		' Z',
 	],
+	letters_test = [],
 	competitors = [],
 	seeded_players = [],
 	heats = [],
@@ -69,34 +71,44 @@ function get_random_int(min, max) {
 function generate_name(name_database, letters, input_array) {
 	while (true) {
 		let generated_name =
-			name_database[get_random_int(0, 15)] + letters[get_random_int(0, 25)];
-		if (check_for_duplicate_name(generated_name, input_array) == true) {
-			break;
+			name_database[get_random_int(0, 15)]; /*+ letters[get_random_int(0, 25)]*/
+		if (check_for_duplicate_name(generated_name, input_array)) {
+			console.log('bling blong');
+			continue;
 		} else {
+			console.log('blingo');
 			return generated_name;
 		}
 	}
 }
 
 function check_for_duplicate_name(generated_name, input_array) {
-	for (entry of input_array) {
-		if (generated_name == entry.name) {
+	for (let entry of input_array) {
+		console.log(entry);
+	}
+	for (let entry of input_array) {
+		console.log('entry_name:' + entry.name);
+		if (generated_name === entry.name) {
+			console.log('bleep bloop');
+
 			return true;
-		} else {
-			return false;
 		}
 	}
+	console.log('bloppo');
 	return false;
 }
 
-function create_competitors(name_database) {
+function create_competitors(name_database, letters_database, input_array) {
 	let output_array = [];
 	for (let i = 0; i < 16; i++) {
 		output_array[i] = new competitor(
-			generate_name(name_database, letters, competitors),
+			generate_name(name_database, letters_database, input_array),
 			get_random_int(0, 2000),
 			null
 		);
+	}
+	for (index of output_array) {
+		console.log(index);
 	}
 	return output_array;
 }
@@ -266,7 +278,7 @@ function combine_results(lower_result, higher_result) {
 	return output_array;
 }
 
-competitors = create_competitors(name_database);
+competitors = create_competitors(names, letters, competitors);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
 heats = create_tournament_stage(seeded_players, 'Heats Stage');
