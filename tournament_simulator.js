@@ -224,19 +224,24 @@ function create_tournament_stage(seeded_players, round_name) {
 		});
 	}
 	display_stage(stage_brackets);
-	return output_array;
+	return stage_brackets;
 }
 
-function display_stage(input_array) {
+/**
+ *Display's the current stage brackets in the console.
+ *
+ * @param {Array} stage_brackets Player's sorted into brackets, two players per bracket.
+ */
+function display_stage(stage_brackets) {
 	let round_number = 1;
-	for (let heat = 0; heat < input_array.length; heat += 2) {
+	for (let bracket = 0; bracket < stage_brackets.length; heat += 2) {
 		console.log(
 			'Bracket ' +
 				round_number +
 				': ' +
-				input_array[heat].name +
+				stage_brackets[bracket].name +
 				' vs ' +
-				input_array[heat + 1].name
+				stage_brackets[bracket + 1].name
 		);
 		round_number++;
 	}
