@@ -15,6 +15,7 @@ let names = [
 		'Aiden',
 		'Amelia',
 		'Elijah',
+		'Jason',
 	],
 	names_test = ['Isabella', 'Maxwell'],
 	letters = [
@@ -45,7 +46,7 @@ let names = [
 		' Y',
 		' Z',
 	],
-	letters_test = [],
+	letters_test = [' a', ' b'],
 	competitors = [],
 	seeded_players = [],
 	heats = [],
@@ -71,12 +72,10 @@ function get_random_int(min, max) {
 function generate_name(name_database, letters, input_array) {
 	while (true) {
 		let generated_name =
-			name_database[get_random_int(0, 15)]; /*+ letters[get_random_int(0, 25)]*/
+			name_database[get_random_int(0, 16)] + letters[get_random_int(0, 25)];
 		if (check_for_duplicate_name(generated_name, input_array)) {
-			console.log('bling blong');
 			continue;
 		} else {
-			console.log('blingo');
 			return generated_name;
 		}
 	}
@@ -84,31 +83,21 @@ function generate_name(name_database, letters, input_array) {
 
 function check_for_duplicate_name(generated_name, input_array) {
 	for (let entry of input_array) {
-		console.log(entry);
-	}
-	for (let entry of input_array) {
-		console.log('entry_name:' + entry.name);
 		if (generated_name === entry.name) {
-			console.log('bleep bloop');
-
 			return true;
 		}
 	}
-	console.log('bloppo');
 	return false;
 }
 
-function create_competitors(name_database, letters_database, input_array) {
+function create_competitors(name_database, letters_database) {
 	let output_array = [];
 	for (let i = 0; i < 16; i++) {
 		output_array[i] = new competitor(
-			generate_name(name_database, letters_database, input_array),
+			generate_name(name_database, letters_database, output_array),
 			get_random_int(0, 2000),
 			null
 		);
-	}
-	for (index of output_array) {
-		console.log(index);
 	}
 	return output_array;
 }

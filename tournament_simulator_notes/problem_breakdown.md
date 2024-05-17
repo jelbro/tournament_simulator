@@ -6,5 +6,5 @@
 - [x] Create [[semi_finals]] 
 - [x] Create [[losers_bracket]]
 - [x] Create [[finals]]
-- [ ] Display [[top_four]]
+- [x] Display [[top_four]]
 - [ ] Calculate new [[rating]]
