@@ -160,16 +160,16 @@ function get_player_seed(players_to_be_seeded) {
 	);
 
 	for (let index = 0; index < 8; index++) {
-		seeded_array.push({
+		seeded_players.push({
 			name: descending_ordered_players[index].name,
 			rating: descending_ordered_players[index].rating,
-			seed: seed_incrementer,
+			seed: seed_number,
 		});
-		seed_incrementer += 1;
-		seeded_array.push({
+		seed_number += 1;
+		seeded_players.push({
 			name: ascending_ordered_players[index].name,
 			rating: ascending_ordered_players[index].rating,
-			seed: seed_incrementer,
+			seed: seed_number,
 		});
 		seed_number += 1;
 	}
@@ -234,7 +234,7 @@ function create_tournament_stage(seeded_players, round_name) {
  */
 function display_stage(stage_brackets) {
 	let round_number = 1;
-	for (let bracket = 0; bracket < stage_brackets.length; heat += 2) {
+	for (let bracket = 0; bracket < stage_brackets.length; bracket += 2) {
 		console.log(
 			'Bracket ' +
 				round_number +
@@ -332,7 +332,7 @@ function get_player_roll(players) {
 	for (let player = 0; player < players.length; player++) {
 		players[player].roll =
 			get_random_int(0, 100) +
-			Math.floor(input_array[index].rating / RATING_WEIGHT);
+			Math.floor(players[player].rating / RATING_WEIGHT);
 	}
 }
 
@@ -341,7 +341,7 @@ function get_player_roll(players) {
  *
  * @param {Array} tournament_results
  */
-function tournament_results(tournament_results) {
+function disply_tournament_results(tournament_results) {
 	console.log('The final results are in!');
 	for (let position = 0; position < tournament_results.length; position++) {
 		console.log(
@@ -383,4 +383,4 @@ finals = create_tournament_stage(finals, 'Finals');
 results = determine_winner(finals);
 results = combine_results(losers_results, finals);
 console.log('\n');
-tournament_results(results);
+disply_tournament_results(results);
