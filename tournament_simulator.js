@@ -150,8 +150,14 @@ function create_competitors(name_array, letters_array) {
 function get_player_seed(players_to_be_seeded) {
 	let seeded_players = [];
 	let seed_number = 1;
-	let descending_ordered_players = order_array(players_to_be_seeded, 'desc');
-	let ascending_ordered_players = order_array(players_to_be_seeded, 'asc');
+	let descending_ordered_players = order_array_by_rating(
+		players_to_be_seeded,
+		'desc'
+	);
+	let ascending_ordered_players = order_array_by_rating(
+		players_to_be_seeded,
+		'asc'
+	);
 
 	for (let index = 0; index < 8; index++) {
 		seeded_array.push({
@@ -178,7 +184,7 @@ function get_player_seed(players_to_be_seeded) {
  * @param {String} order a string of either 'desc' or 'asc'
  * @return {Array} returns a sorted array depending on order string
  */
-function order_array(input_array, order) {
+function order_array_by_rating(input_array, order) {
 	let sorted_array = [];
 	if ((order = 'desc')) {
 		sorted_array = input_array.slice();
