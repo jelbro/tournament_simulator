@@ -247,13 +247,6 @@ function display_stage(stage_brackets) {
 	}
 }
 
-function get_player_roll(input_array) {
-	for (let index = 0; index < input_array.length; index++) {
-		input_array[index].roll =
-			get_random_int(0, 100) + Math.floor(input_array[index].rating / 100);
-	}
-}
-
 function determine_winner(input_array, finals, losers_finals) {
 	let output_array = [];
 	get_player_roll(input_array);
@@ -326,6 +319,21 @@ function determine_winner(input_array, finals, losers_finals) {
 		}
 	}
 	return output_array;
+}
+
+/**
+ * Assigns a new roll to the player.
+ * The roll is summed with the player's rating divied by the rating weight (set to 100 by default)
+ *
+ * @param {Array} players
+ */
+function get_player_roll(players) {
+	const RATING_WEIGHT = 100;
+	for (let player = 0; player < players.length; player++) {
+		players[player].roll =
+			get_random_int(0, 100) +
+			Math.floor(input_array[index].rating / RATING_WEIGHT);
+	}
 }
 
 function tournament_results(input_array) {
