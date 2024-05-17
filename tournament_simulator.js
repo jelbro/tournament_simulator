@@ -336,11 +336,16 @@ function get_player_roll(players) {
 	}
 }
 
-function tournament_results(input_array) {
+/**
+ * Takes in an array of the top four players after the finals and loser's finals and displays them in order from 1st to 4th.
+ *
+ * @param {Array} tournament_results
+ */
+function tournament_results(tournament_results) {
 	console.log('The final results are in!');
-	for (let position = 0; position < input_array.length; position++) {
+	for (let position = 0; position < tournament_results.length; position++) {
 		console.log(
-			'In position ' + (position + 1) + ' ' + input_array[position].name
+			'In position ' + (position + 1) + ' ' + tournament_results[position].name
 		);
 	}
 }
