@@ -158,6 +158,9 @@ function get_player_seed(players_to_be_seeded) {
 		players_to_be_seeded,
 		'asc'
 	);
+	for (p in descending_ordered_players) {
+		console.log(p);
+	}
 
 	for (let index = 0; index < 8; index++) {
 		seeded_players.push({
@@ -186,13 +189,13 @@ function get_player_seed(players_to_be_seeded) {
  */
 function order_array_by_rating(input_array, order) {
 	let sorted_array = [];
-	if ((order = 'desc')) {
+	if (order === 'desc') {
 		sorted_array = input_array.slice();
 		sorted_array.sort(function (high, low) {
 			return low.rating - high.rating;
 		});
-	} else if ((order = 'asc')) {
-		sorted_array = input_array.slice();
+	} else if (order === 'asc') {
+		sorted_array == input_array.slice();
 		sorted_array.sort(function (high, low) {
 			return high.rating - low.rating;
 		});
@@ -362,6 +365,9 @@ function combine_results(lower_result, higher_result) {
 }
 
 competitors = create_competitors(names, letters, competitors);
+/*for (p of competitors) {
+	console.log(p);
+}*/
 seeded_players = get_player_seed(competitors);
 console.log('\n');
 heats = create_tournament_stage(seeded_players, 'Heats Stage');
