@@ -1,3 +1,5 @@
+const NUMBER_OF_PLAYERS = 16;
+
 let names = [
 	'Isabella',
 	'Maxwell',
@@ -119,17 +121,24 @@ function check_for_duplicate_name(generated_name, current_names_array) {
 	return false;
 }
 
-function create_competitors(name_database, letters_database) {
-	let output_array = [];
-	for (let i = 0; i < 16; i++) {
-		output_array[i] = new competitor(
-			generate_name(name_database, letters_database, output_array),
+/**
+ *Create's new competitor objects for the amount of players in the tournament.
+ *
+ * @param {Array} name_array of useable names to generate from
+ * @param {Array} letters_array of useable letter's to append to names
+ * @return {Array} An array of competitor objects
+ */
+function create_competitors(name_array, letters_array) {
+	let competitors_array = [];
+	for (let i = 0; i < NUMBER_OF_PLAYERS; i++) {
+		competitors_array[i] = new competitor(
+			generate_name(name_array, letters_array, competitors_array),
 			get_random_int(0, 2000),
 			null,
 			null
 		);
 	}
-	return output_array;
+	return competitors_array;
 }
 
 function get_player_seed(input_array) {
