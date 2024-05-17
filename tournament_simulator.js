@@ -150,25 +150,27 @@ function create_competitors(name_array, letters_array) {
 function get_player_seed(players_to_be_seeded) {
 	let seeded_players = [];
 	let seed_number = 1;
-	let descending_ordered_players = order_array_by_rating(
+	let descending_ordered_players = [];
+	descending_ordered_players = order_array_by_rating(
 		players_to_be_seeded,
 		'desc'
 	);
-	let ascending_ordered_players = order_array_by_rating(
+
+	let ascending_ordered_players = [];
+	ascending_ordered_players = order_array_by_rating(
 		players_to_be_seeded,
 		'asc'
 	);
-	for (p in descending_ordered_players) {
-		console.log(p);
-	}
 
 	for (let index = 0; index < 8; index++) {
+		//console.log(descending_ordered_players[index].name);
 		seeded_players.push({
 			name: descending_ordered_players[index].name,
 			rating: descending_ordered_players[index].rating,
 			seed: seed_number,
 		});
 		seed_number += 1;
+		console.log(ascending_ordered_players[index].name);
 		seeded_players.push({
 			name: ascending_ordered_players[index].name,
 			rating: ascending_ordered_players[index].rating,
@@ -195,7 +197,7 @@ function order_array_by_rating(input_array, order) {
 			return low.rating - high.rating;
 		});
 	} else if (order === 'asc') {
-		sorted_array == input_array.slice();
+		sorted_array = input_array.slice();
 		sorted_array.sort(function (high, low) {
 			return high.rating - low.rating;
 		});
