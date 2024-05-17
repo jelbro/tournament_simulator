@@ -200,22 +200,30 @@ function order_array_by_rating(input_array, order) {
 	return sorted_array;
 }
 
-function create_tournament_stage(seeded_array, round_name) {
-	let output_array = [];
+/**
+ * Displays the round name in the console, sorts the seeded players into heats by putting two players into one heat.
+ * And passes the heat sorted players to be displayed by display_stage().
+ *
+ * @param {Array} seeded_players array of players sorted by seed number
+ * @param {String} round_name name of the round to be displayed
+ * @return {Array} returns an array of players sorted into heats, two players per heat index.
+ */
+function create_tournament_stage(seeded_players, round_name) {
+	let stage_brackets = [];
 	console.log(round_name + ':\n');
-	for (let index = 0; index < seeded_array.length; index += 2) {
-		output_array.push({
-			name: seeded_array[index].name,
-			rating: seeded_array[index].rating,
-			seed: seeded_array[index].seed,
+	for (let index = 0; index < seeded_players.length; index += 2) {
+		stage_brackets.push({
+			name: seeded_players[index].name,
+			rating: seeded_players[index].rating,
+			seed: seeded_players[index].seed,
 		});
-		output_array.push({
-			name: seeded_array[index + 1].name,
-			rating: seeded_array[index + 1].rating,
-			seed: seeded_array[index + 1].seed,
+		stage_brackets.push({
+			name: seeded_players[index + 1].name,
+			rating: seeded_players[index + 1].rating,
+			seed: seeded_players[index + 1].seed,
 		});
 	}
-	display_stage(output_array);
+	display_stage(stage_brackets);
 	return output_array;
 }
 
