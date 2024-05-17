@@ -1,79 +1,101 @@
 let names = [
-		'Isabella',
-		'Maxwell',
-		'Ava',
-		'Lucas',
-		'Olivia',
-		'Ethan',
-		'Sophia',
-		'Logan',
-		'Mia',
-		'Noah',
-		'Charlotte',
-		'Jackson',
-		'Emma',
-		'Aiden',
-		'Amelia',
-		'Elijah',
-		'Jason',
-	],
-	names_test = ['Isabella', 'Maxwell'],
-	letters = [
-		' A',
-		' B',
-		' C',
-		' D',
-		' E',
-		' F',
-		' G',
-		' H',
-		' I',
-		' J',
-		' K',
-		' L',
-		' M',
-		' N',
-		' O',
-		' P',
-		' Q',
-		' R',
-		' S',
-		' T',
-		' U',
-		' V',
-		' W',
-		' X',
-		' Y',
-		' Z',
-	],
-	letters_test = [' a', ' b'],
-	competitors = [],
-	seeded_players = [],
-	heats = [],
-	quarters = [],
-	semis = [],
-	losers = [],
-	losers_results = [],
-	finals = [],
-	results = [];
+	'Isabella',
+	'Maxwell',
+	'Ava',
+	'Lucas',
+	'Olivia',
+	'Ethan',
+	'Sophia',
+	'Logan',
+	'Mia',
+	'Noah',
+	'Charlotte',
+	'Jackson',
+	'Emma',
+	'Aiden',
+	'Amelia',
+	'Elijah',
+	'Jason',
+];
+let letters = [
+	' A',
+	' B',
+	' C',
+	' D',
+	' E',
+	' F',
+	' G',
+	' H',
+	' I',
+	' J',
+	' K',
+	' L',
+	' M',
+	' N',
+	' O',
+	' P',
+	' Q',
+	' R',
+	' S',
+	' T',
+	' U',
+	' V',
+	' W',
+	' X',
+	' Y',
+	' Z',
+];
+let competitors = [];
+let seeded_players = [];
+let heats = [];
+let quarters = [];
+let semis = [];
+let losers = [];
+let losers_results = [];
+let finals = [];
+let results = [];
 
-function competitor(name, rating, seed) {
+/**
+ *Competitor object, I think this hasn't been implemented properly throughout the code
+ *
+ * @param {string} name
+ * @param {number} rating
+ * @param {number} seed
+ */
+function competitor(name, rating, seed, roll) {
 	this.name = name;
 	this.rating = rating;
 	this.seed = seed;
+	this.roll = roll;
 }
 
+/**
+ *Returns a random whole number between min and max
+ *
+ * @param {number} min generate numbers from this
+ * @param {number} max generate numbers up to this
+ * @return {number} returns a whole number between min and max
+ */
 function get_random_int(min, max) {
 	const MIN_CEILED = Math.ceil(min);
 	const MAX_FLOORED = Math.floor(max);
 	return Math.floor(Math.random() * (MAX_FLOORED - MIN_CEILED) + MIN_CEILED);
 }
 
-function generate_name(name_database, letters, input_array) {
+/**
+ *Generates a player name from inputted name and letter arrays. Loops until a non-duplicate name is found.
+ *
+ * @param {Array} name_array an array of names to generate from
+ * @param {Array} letters an array of letters to generate from
+ * @param {Array} current_names_array an array of including previously generated names
+ * @return {string} a name that has been checked against previous generated names to not be a duplicate
+ */
+function generate_name(name_array, letter_array, current_names_array) {
 	while (true) {
 		let generated_name =
-			name_database[get_random_int(0, 16)] + letters[get_random_int(0, 25)];
-		if (check_for_duplicate_name(generated_name, input_array)) {
+			name_array[get_random_int(0, name_array.length)] +
+			letter_array[get_random_int(0, letter_array.length)];
+		if (check_for_duplicate_name(generated_name, current_names_array)) {
 			continue;
 		} else {
 			return generated_name;
@@ -81,9 +103,16 @@ function generate_name(name_database, letters, input_array) {
 	}
 }
 
-function check_for_duplicate_name(generated_name, input_array) {
-	for (let entry of input_array) {
-		if (generated_name === entry.name) {
+/**
+ *A function that tests if the given generated name exists within the array of previously generated names.
+ *
+ * @param {string} generated_name current generated name to check if is a duplicate
+ * @param {Array} current_names_array
+ * @return {boolean} True if the generated name exists already in the current names array
+ */
+function check_for_duplicate_name(generated_name, current_names_array) {
+	for (let player of current_names_array) {
+		if (generated_name === player.name) {
 			return true;
 		}
 	}
@@ -96,6 +125,7 @@ function create_competitors(name_database, letters_database) {
 		output_array[i] = new competitor(
 			generate_name(name_database, letters_database, output_array),
 			get_random_int(0, 2000),
+			null,
 			null
 		);
 	}
