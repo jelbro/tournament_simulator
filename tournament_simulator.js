@@ -141,6 +141,12 @@ function create_competitors(name_array, letters_array) {
 	return competitors_array;
 }
 
+/**
+ *
+ *
+ * @param {*} input_array
+ * @return {*}
+ */
 function get_player_seed(input_array) {
 	let seeded_array = [];
 	let seed_incrementer = 1;
@@ -169,6 +175,29 @@ function get_player_seed(input_array) {
 	}
 
 	return seeded_array;
+}
+
+/**
+ *Sorts given array by rating, depending on the order string given.
+ *
+ * @param {Array} input_array inputted array to be sorted
+ * @param {String} order a string of either 'desc' or 'asc'
+ * @return {Array} returns a sorted array depending on order string
+ */
+function order_array(input_array, order) {
+	let sorted_array = [];
+	if ((order = 'desc')) {
+		sorted_array = input_array.slice();
+		sorted_array.sort(function (high, low) {
+			return low.rating - high.rating;
+		});
+	} else if ((order = 'asc')) {
+		sorted_array = input_array.slice();
+		sorted_array.sort(function (high, low) {
+			return high.rating - low.rating;
+		});
+	}
+	return sorted_array;
 }
 
 function create_tournament_stage(seeded_array, round_name) {
