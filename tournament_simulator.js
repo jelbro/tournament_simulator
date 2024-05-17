@@ -142,23 +142,17 @@ function create_competitors(name_array, letters_array) {
 }
 
 /**
+ * Gives players a seed number based on their rating and then returns an array of players ordered by their seed number from high to low.
  *
- *
- * @param {*} input_array
- * @return {*}
+ * @param {Array} players_to_be_seeded an array of players needing to be sorted and given seed numbers
+ * @return {Array} returns an array of players sorted by their seed number.
  */
-function get_player_seed(input_array) {
-	let seeded_array = [];
-	let seed_incrementer = 1;
-	let descending_ordered_players = input_array.slice();
-	descending_ordered_players.sort(function (high, low) {
-		return low.rating - high.rating;
-	});
+function get_player_seed(players_to_be_seeded) {
+	let seeded_players = [];
+	let seed_number = 1;
+	let descending_ordered_players = order_array(players_to_be_seeded, 'desc');
+	let ascending_ordered_players = order_array(players_to_be_seeded, 'asc');
 
-	let ascending_ordered_players = input_array.slice();
-	ascending_ordered_players.sort(function (high, low) {
-		return high.rating - low.rating;
-	});
 	for (let index = 0; index < 8; index++) {
 		seeded_array.push({
 			name: descending_ordered_players[index].name,
@@ -171,14 +165,14 @@ function get_player_seed(input_array) {
 			rating: ascending_ordered_players[index].rating,
 			seed: seed_incrementer,
 		});
-		seed_incrementer += 1;
+		seed_number += 1;
 	}
 
-	return seeded_array;
+	return seeded_players;
 }
 
 /**
- *Sorts given array by rating, depending on the order string given.
+ *Sorts given array by rating, depending on the order string given. 'asc' or 'desc'
  *
  * @param {Array} input_array inputted array to be sorted
  * @param {String} order a string of either 'desc' or 'asc'
