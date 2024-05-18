@@ -409,13 +409,22 @@ function create_and_seed_players(names, letters, competitors) {
  * @param {Array} players_entering_stage The players entering the torunament stage e.g seeded players into the heats
  * @param {String} name_of_stage The name of the current stage to be displayed
  */
-function run_stage(players_entering_stage, name_of_stage) {
+function run_stage(
+	players_entering_stage,
+	name_of_stage,
+	is_finals,
+	is_losers_finals
+) {
 	let current_stage_players = create_tournament_stage(
 		players_entering_stage,
 		name_of_stage
 	);
 	new_line();
-	winners_of_stage = determine_winner(current_stage_players);
+	winners_of_stage = determine_winner(
+		current_stage_players,
+		is_finals,
+		is_losers_finals
+	);
 }
 
 /**
@@ -427,10 +436,17 @@ function run_torunament(competitors) {
 	seeded_players = create_and_seed_players(names, letters, competitors);
 	new_line();
 	quarters = run_stage(seeded_players, 'Heats Stage');
+	semis = run_stage(quarters, 'Quarter Finals');
+	finals = run_stage(semis, 'Semi Finals', true, false);
+	losers_results = run_stage(losing_players, 'Losers Finals', false, true);
+	results = run_stage(finals, 'Finals');
+	results = combine_results(losers_results, finals);
+	new_line();
+	disply_tournament_results(results);
 }
 
 run_torunament(competitors);
-
+/*
 competitors = create_competitors(names, letters, competitors);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
@@ -438,6 +454,7 @@ heats = create_tournament_stage(seeded_players, 'Heats Stage');
 console.log('\n');
 quarters = determine_winner(heats);
 console.log('\n');
+
 quarters = create_tournament_stage(quarters, 'Quarter Finals');
 console.log('\n');
 semis = determine_winner(quarters);
@@ -454,3 +471,4 @@ results = determine_winner(finals);
 results = combine_results(losers_results, finals);
 console.log('\n');
 disply_tournament_results(results);
+*/
