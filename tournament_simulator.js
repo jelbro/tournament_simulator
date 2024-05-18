@@ -380,6 +380,17 @@ function combine_results(lower_result, higher_result) {
 	return output_array;
 }
 
+/**
+ *Creates a new line in the console
+ *
+ * @return {*}
+ */
+function new_line() {
+	return console.log('\n');
+}
+
+function run_torunament(competitors) {}
+
 competitors = create_competitors(names, letters, competitors);
 seeded_players = get_player_seed(competitors);
 console.log('\n');
