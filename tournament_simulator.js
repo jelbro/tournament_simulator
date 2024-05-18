@@ -389,7 +389,17 @@ function new_line() {
 	return console.log('\n');
 }
 
-function run_torunament(competitors) {}
+function create_and_seed_players(names, letters, competitors) {
+	competitors = create_competitors(names, letters, competitors);
+	seeded_players = get_player_seed(competitors);
+	return seeded_players;
+}
+
+function run_torunament(competitors) {
+	seeded_players = create_and_seed_players(names, letters, competitors);
+}
+
+run_torunament(competitors);
 
 competitors = create_competitors(names, letters, competitors);
 seeded_players = get_player_seed(competitors);
