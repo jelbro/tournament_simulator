@@ -404,12 +404,29 @@ function create_and_seed_players(names, letters, competitors) {
 }
 
 /**
+ *A function that runs a creates and runs a stage of the tournament
+ *
+ * @param {Array} players_entering_stage The players entering the torunament stage e.g seeded players into the heats
+ * @param {String} name_of_stage The name of the current stage to be displayed
+ */
+function run_stage(players_entering_stage, name_of_stage) {
+	let current_stage_players = create_tournament_stage(
+		players_entering_stage,
+		name_of_stage
+	);
+	new_line();
+	winners_of_stage = determine_winner(current_stage_players);
+}
+
+/**
  *A function to run the main logic of a tournament
  *
  * @param {Array} competitors the initial array to store the players of the tournament
  */
 function run_torunament(competitors) {
 	seeded_players = create_and_seed_players(names, letters, competitors);
+	new_line();
+	quarters = run_stage(seeded_players, 'Heats Stage');
 }
 
 run_torunament(competitors);
