@@ -52,7 +52,7 @@ let seeded_players = [];
 let heats = [];
 let quarters = [];
 let semis = [];
-let losers = [];
+let losing_players = [];
 let losers_results = [];
 let finals = [];
 let results = [];
@@ -163,14 +163,12 @@ function get_player_seed(players_to_be_seeded) {
 	);
 
 	for (let index = 0; index < 8; index++) {
-		//console.log(descending_ordered_players[index].name);
 		seeded_players.push({
 			name: descending_ordered_players[index].name,
 			rating: descending_ordered_players[index].rating,
 			seed: seed_number,
 		});
 		seed_number += 1;
-		console.log(ascending_ordered_players[index].name);
 		seeded_players.push({
 			name: ascending_ordered_players[index].name,
 			rating: ascending_ordered_players[index].rating,
@@ -252,8 +250,17 @@ function display_stage(stage_brackets) {
 	}
 }
 
+/**
+ *Function that compares the two players of the current brackets roll's
+ *and determines who has won and returns that player to the array of player's in the next round
+ *
+ * @param {Array} currents_stage_players an array of players of the current stage e.g. the players in the semi-finals
+ * @param {Boolean} is_finals a boolean value to determine if the current stage is the finals
+ * @param {Boolean} losers_finals a boolean value to determine if the current stage is the losers_finals
+ * @return {Array} returns an array of the player's that won their bracket in the current stage
+ */
 function determine_winner(input_array, finals, losers_finals) {
-	let output_array = [];
+	let winning_players = [];
 	get_player_roll(input_array);
 	let round_number = 1;
 	for (let index = 0; index < input_array.length; index += 2) {
@@ -270,19 +277,19 @@ function determine_winner(input_array, finals, losers_finals) {
 					"'s roll of " +
 					input_array[index + 1].roll
 			);
-			output_array.push({
+			winning_players.push({
 				name: input_array[index].name,
 				rating: input_array[index].rating,
 				seed: input_array[index].seed,
 			});
 			if (finals) {
-				losers.push({
+				losing_players.push({
 					name: input_array[index + 1].name,
 					rating: input_array[index + 1].rating,
 					seed: input_array[index + 1].seed,
 				});
 			} else if (losers_finals) {
-				output_array.push({
+				winning_players.push({
 					name: input_array[index + 1].name,
 					rating: input_array[index + 1].rating,
 					seed: input_array[index + 1].seed,
@@ -302,19 +309,19 @@ function determine_winner(input_array, finals, losers_finals) {
 					"'s roll of " +
 					input_array[index].roll
 			);
-			output_array.push({
+			winning_players.push({
 				name: input_array[index + 1].name,
 				rating: input_array[index + 1].rating,
 				seed: input_array[index + 1].seed,
 			});
 			if (finals) {
-				losers.push({
+				losing_players.push({
 					name: input_array[index].name,
 					rating: input_array[index].rating,
 					seed: input_array[index].seed,
 				});
 			} else if (losers_finals) {
-				output_array.push({
+				winning_players.push({
 					name: input_array[index].name,
 					rating: input_array[index].rating,
 					seed: input_array[index].seed,
@@ -323,7 +330,7 @@ function determine_winner(input_array, finals, losers_finals) {
 			round_number++;
 		}
 	}
-	return output_array;
+	return winning_players;
 }
 
 /**
@@ -384,8 +391,8 @@ semis = create_tournament_stage(semis, 'Semi Finals');
 console.log('\n');
 finals = determine_winner(semis, true);
 console.log('\n');
-losers = create_tournament_stage(losers, 'Losers Finals');
-losers_results = determine_winner(losers, false, true);
+losing_players = create_tournament_stage(losing_players, 'Losers Finals');
+losers_results = determine_winner(losing_players, false, true);
 console.log('\n');
 finals = create_tournament_stage(finals, 'Finals');
 results = determine_winner(finals);
