@@ -362,6 +362,13 @@ function disply_tournament_results(tournament_results) {
 	}
 }
 
+/**
+ *Combines the results of the loser finals and the finals into the finals results array
+ *
+ * @param {Array} losers_finals_results an array of the the players that were in the losers finals ordered by who won
+ * @param {Array} finals_results an array of the the players that were in the finals ordered by who won
+ * @return {Array} an array of the finals_results and the losers_finals_results joined in order of place in the tournament overall
+ */
 function combine_results(lower_result, higher_result) {
 	output_array = [];
 	for (let result of higher_result) {
@@ -374,9 +381,6 @@ function combine_results(lower_result, higher_result) {
 }
 
 competitors = create_competitors(names, letters, competitors);
-/*for (p of competitors) {
-	console.log(p);
-}*/
 seeded_players = get_player_seed(competitors);
 console.log('\n');
 heats = create_tournament_stage(seeded_players, 'Heats Stage');
