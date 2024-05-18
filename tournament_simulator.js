@@ -389,12 +389,25 @@ function new_line() {
 	return console.log('\n');
 }
 
+/**
+ *A function to create competitors and give them seed numbers based on their rating.
+ *
+ * @param {Array} names an array of names to be generated from
+ * @param {Array} letters an array of letters to be generated from
+ * @param {Array} competitors an array that includes the intial competitors before being sorted by seed number
+ * @return {Array} an array of players sorted by their seed number
+ */
 function create_and_seed_players(names, letters, competitors) {
 	competitors = create_competitors(names, letters, competitors);
 	seeded_players = get_player_seed(competitors);
 	return seeded_players;
 }
 
+/**
+ *A function to run the main logic of a tournament
+ *
+ * @param {Array} competitors the initial array to store the players of the tournament
+ */
 function run_torunament(competitors) {
 	seeded_players = create_and_seed_players(names, letters, competitors);
 }
