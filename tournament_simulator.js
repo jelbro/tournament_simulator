@@ -425,6 +425,8 @@ function run_stage(
 		is_finals,
 		is_losers_finals
 	);
+	new_line();
+	return winners_of_stage;
 }
 
 /**
