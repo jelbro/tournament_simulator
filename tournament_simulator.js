@@ -213,7 +213,9 @@ function order_array_by_rating(input_array, order) {
  */
 function create_tournament_stage(seeded_players, round_name) {
 	let stage_brackets = [];
-	console.log(round_name + ':\n');
+	new_line();
+	console.log(round_name + ':');
+	new_line();
 	for (let index = 0; index < seeded_players.length; index += 2) {
 		stage_brackets.push({
 			name: seeded_players[index].name,
@@ -248,6 +250,7 @@ function display_stage(stage_brackets) {
 		);
 		round_number++;
 	}
+	new_line();
 }
 
 /**
@@ -354,7 +357,9 @@ function get_player_roll(players) {
  * @param {Array} tournament_results
  */
 function disply_tournament_results(tournament_results) {
+	new_line();
 	console.log('The final results are in!');
+	new_line();
 	for (let position = 0; position < tournament_results.length; position++) {
 		console.log(
 			'In position ' + (position + 1) + ' ' + tournament_results[position].name
@@ -419,13 +424,13 @@ function run_stage(
 		players_entering_stage,
 		name_of_stage
 	);
-	new_line();
+	//new_line();
 	winners_of_stage = determine_winner(
 		current_stage_players,
 		is_finals,
 		is_losers_finals
 	);
-	new_line();
+	//new_line();
 	return winners_of_stage;
 }
 
@@ -436,14 +441,12 @@ function run_stage(
  */
 function run_torunament(competitors) {
 	seeded_players = create_and_seed_players(names, letters, competitors);
-	new_line();
 	quarters = run_stage(seeded_players, 'Heats Stage');
 	semis = run_stage(quarters, 'Quarter Finals');
 	finals = run_stage(semis, 'Semi Finals', true, false);
 	losers_results = run_stage(losing_players, 'Losers Finals', false, true);
 	results = run_stage(finals, 'Finals');
 	results = combine_results(losers_results, finals);
-	new_line();
 	disply_tournament_results(results);
 }
 
