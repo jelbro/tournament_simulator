@@ -57,23 +57,39 @@ let losers_results = [];
 let finals = [];
 let results = [];
 
-function display_bracket() {
+function display_bracket(
+	seed_one,
+	seed_two,
+	seed_three,
+	seed_four,
+	seed_five,
+	seed_six,
+	seed_seven,
+	seed_eight,
+	bracket_one_winner,
+	bracket_two_winner,
+	bracket_three_winner,
+	bracket_four_winner,
+	quarter_final_one_winner,
+	quarter_final_two_winner,
+	semi_final_one_winner
+) {
 	console.log(`
 	${seed_one}--|
-				 |-----${bracket_one_winner}
-	${seed_two}--|     |                      
-					   |----------${quarter_final_one_winner}|
-  ${seed_three}--|	   |                                     |
-				 |-----${bracket_two_winner}				 |
-   ${seed_four}--|	                                         |
+	      |-----${bracket_one_winner}
+	${seed_two}--|    |                      
+                   |----------${quarter_final_one_winner}|
+        ${seed_three}--|	   |                                     |
+              |-----${bracket_two_winner}				 |
+         ${seed_four}--|	                                         |
 	                                                         |${semi_final_one_winner}
    ${seed_five}--|                                           |
 				 |-----${bracket_three_winner}               |
 	${seed_six}--|     |                                     |
 					   |----------${quarter_final_two_winner}|
-  ${seed_eight}--|	   |
+  ${seed_seven}--|	   |
 				 |-----${bracket_four_winner}
-   ${seed_nine}--|	
+  ${seed_eight}--|	
 	
 	`);
 }
@@ -471,6 +487,23 @@ function run_torunament(competitors) {
 	disply_tournament_results(results);
 }
 
+display_bracket(
+	'John',
+	'Flon',
+	'smon',
+	'gon',
+	'bong',
+	'bing',
+	'lao',
+	'gan',
+	'ma',
+	'hello',
+	'bing',
+	'chilling',
+	'bongus',
+	'crongus',
+	'flongus'
+);
 run_torunament(competitors);
 /*
 competitors = create_competitors(names, letters, competitors);
