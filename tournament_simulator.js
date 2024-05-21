@@ -57,6 +57,27 @@ let losers_results = [];
 let finals = [];
 let results = [];
 
+function display_bracket() {
+	console.log(`
+	${seed_one}--|
+				 |-----${bracket_one_winner}
+	${seed_two}--|     |                      
+					   |----------${quarter_final_one_winner}|
+  ${seed_three}--|	   |                                     |
+				 |-----${bracket_two_winner}				 |
+   ${seed_four}--|	                                         |
+	                                                         |${semi_final_one_winner}
+   ${seed_five}--|                                           |
+				 |-----${bracket_three_winner}               |
+	${seed_six}--|     |                                     |
+					   |----------${quarter_final_two_winner}|
+  ${seed_eight}--|	   |
+				 |-----${bracket_four_winner}
+   ${seed_nine}--|	
+	
+	`);
+}
+
 /**
  *Competitor object, I think this hasn't been implemented properly throughout the code
  *
