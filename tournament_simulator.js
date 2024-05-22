@@ -58,40 +58,26 @@ let finals = [];
 let results = [];
 
 function display_bracket(
-	s1,
-	s2,
-	s3,
-	s4,
-	s4,
-	s5,
-	s6,
-	s7,
-	s8,
-	b1,
-	b2,
-	b3,
-	b4,
-	q1,
-	q2,
-	c1 //semi(Circle)-final 1
+	be = [s1, s2, s3, s4, s4, s5, s6, s7, s8, b1, b2, b3, b4, q1, q2, c1]
+	//semi(Circle)-final 1
 ) {
 	console.log(
 		'\n',
-		`${s1}--|\n`,
-		`      |-----${b1}\n`,
-		`${s2}--|     |\n`,
-		`            |----------${q1}|\n`,
-		`${s3}--|     |              |\n`,
-		`      |-----${b2}           |\n`,
-		`${s4}--|                    |\n`,
-		`                           |${c1}\n`,
-		`${s5}--|                    |\n`,
-		`      |-----${b3}           |\n`,
-		`${s6}--|     |              |\n`,
-		`            |----------${q2}|\n`,
-		`${s7}--|     |\n`,
-		`      |-----${b4}\n`,
-		`${s8}--|\n`
+		`${be[0]}--|\n`,
+		`      |-----${be[8]}\n`,
+		`${be[1]}--|     |\n`,
+		`            |----------${be[12]}|\n`,
+		`${be[2]}--|     |              |\n`,
+		`      |-----${be[9]}           |\n`,
+		`${be[3]}--|                    |\n`,
+		`                           |${be[14]}\n`,
+		`${be[4]}--|                    |\n`,
+		`      |-----${be[10]}           |\n`,
+		`${be[5]}--|     |              |\n`,
+		`            |----------${be[13]}|\n`,
+		`${be[6]}--|     |\n`,
+		`      |-----${be[11]}\n`,
+		`${be[7]}--|\n`
 	);
 }
 
@@ -490,23 +476,25 @@ function run_torunament(competitors) {
 
 run_torunament(competitors);
 display_bracket(
-	'John',
-	'Flon',
-	'smon',
-	'gonn',
-	'bong',
-	'bing',
-	'laon',
-	'gano',
-	'maan',
-	'helk',
-	'bing',
-	'chil',
-	'bong',
-	'cron',
-	'flon',
-	'gonk',
-	'jimmy'
+	(bracket_entrys = [
+		'John',
+		'Flon',
+		'smon',
+		'gonn',
+		'bong',
+		'bing',
+		'laon',
+		'gano',
+		'maan',
+		'helk',
+		'bing',
+		'chil',
+		'bong',
+		'cron',
+		'flon',
+		'gonk',
+		'jimmy',
+	])
 );
 /*
 competitors = create_competitors(names, letters, competitors);
