@@ -74,24 +74,23 @@ function display_bracket(
 	quarter_final_two_winner,
 	semi_final_one_winner
 ) {
-	console.log(`
-	${seed_one}--|
-	      |-----${bracket_one_winner}
-	${seed_two}--|    |                      
-                   |----------${quarter_final_one_winner}|
-        ${seed_three}--|	   |                                     |
-              |-----${bracket_two_winner}				 |
-         ${seed_four}--|	                                         |
-	                                                         |${semi_final_one_winner}
-   ${seed_five}--|                                           |
-				 |-----${bracket_three_winner}               |
-	${seed_six}--|     |                                     |
-					   |----------${quarter_final_two_winner}|
-  ${seed_seven}--|	   |
-				 |-----${bracket_four_winner}
-  ${seed_eight}--|	
-	
-	`);
+	console.log(
+		`  ${seed_one}--|\n`,
+		`               |-----${bracket_one_winner}\n`,
+		`  ${seed_two}--|     |\n`,
+		`                     |----------${quarter_final_one_winner}|\n`,
+		`${seed_three}--|	  |                                     |\n`,
+		`               |-----${bracket_two_winner}				    |\n`,
+		` ${seed_four}--|	                                        |\n`,
+		`                                                           |${semi_final_one_winner}\n`,
+		` ${seed_five}--|                                           |\n`,
+		`               |-----${bracket_three_winner}               |\n`,
+		`  ${seed_six}--|     |                                     |\n`,
+		`                     |----------${quarter_final_two_winner}|\n`,
+		`${seed_seven}--|	  |\n`,
+		`               |-----${bracket_four_winner}\n`,
+		`${seed_eight}--|\n`
+	);
 }
 
 /**
@@ -487,24 +486,24 @@ function run_torunament(competitors) {
 	disply_tournament_results(results);
 }
 
+run_torunament(competitors);
 display_bracket(
 	'John',
 	'Flon',
 	'smon',
-	'gon',
+	'gonn',
 	'bong',
 	'bing',
-	'lao',
-	'gan',
-	'ma',
-	'hello',
+	'laon',
+	'gano',
+	'maan',
+	'helk',
 	'bing',
-	'chilling',
-	'bongus',
-	'crongus',
-	'flongus'
+	'chil',
+	'bong',
+	'cron',
+	'flon'
 );
-run_torunament(competitors);
 /*
 competitors = create_competitors(names, letters, competitors);
 seeded_players = get_player_seed(competitors);
