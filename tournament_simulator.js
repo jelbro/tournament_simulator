@@ -58,9 +58,9 @@ let finals = [];
 let results = [];
 
 function display_bracket(
-	be = [s1, s2, s3, s4, s4, s5, s6, s7, s8, b1, b2, b3, b4, q1, q2, c1]
-	//semi(Circle)-final 1
+	bracket_entrys = [s1, s2, s3, s4, s4, s5, s6, s7, s8, b1, b2, b3, b4, q1, q2, c1]
 ) {
+	be = pad_bracket_entrys(bracket_entrys)
 	console.log(
 		'\n',
 		`${be[0]}--|\n`,
@@ -79,6 +79,15 @@ function display_bracket(
 		`      |-----${be[11]}\n`,
 		`${be[7]}--|\n`
 	);
+}
+
+function pad_bracket_entrys(bracket_entrys) {
+	while (true) {
+		entry_length = 0
+		for (let entry of bracket_entrys) {
+			if (entry.length)  
+		}
+	}
 }
 
 /**
