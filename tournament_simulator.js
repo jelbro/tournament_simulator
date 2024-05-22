@@ -58,38 +58,40 @@ let finals = [];
 let results = [];
 
 function display_bracket(
-	seed_one,
-	seed_two,
-	seed_three,
-	seed_four,
-	seed_five,
-	seed_six,
-	seed_seven,
-	seed_eight,
-	bracket_one_winner,
-	bracket_two_winner,
-	bracket_three_winner,
-	bracket_four_winner,
-	quarter_final_one_winner,
-	quarter_final_two_winner,
-	semi_final_one_winner
+	s1,
+	s2,
+	s3,
+	s4,
+	s4,
+	s5,
+	s6,
+	s7,
+	s8,
+	b1,
+	b2,
+	b3,
+	b4,
+	q1,
+	q2,
+	c1 //semi(Circle)-final 1
 ) {
 	console.log(
-		`  ${seed_one}--|\n`,
-		`               |-----${bracket_one_winner}\n`,
-		`  ${seed_two}--|     |\n`,
-		`                     |----------${quarter_final_one_winner}|\n`,
-		`${seed_three}--|	  |                                     |\n`,
-		`               |-----${bracket_two_winner}				    |\n`,
-		` ${seed_four}--|	                                        |\n`,
-		`                                                           |${semi_final_one_winner}\n`,
-		` ${seed_five}--|                                           |\n`,
-		`               |-----${bracket_three_winner}               |\n`,
-		`  ${seed_six}--|     |                                     |\n`,
-		`                     |----------${quarter_final_two_winner}|\n`,
-		`${seed_seven}--|	  |\n`,
-		`               |-----${bracket_four_winner}\n`,
-		`${seed_eight}--|\n`
+		'\n',
+		`${s1}--|\n`,
+		`       |-----${b1}\n`,
+		`${s2}--|     |\n`,
+		`              |----------${q1}|\n`,
+		`  ${s3}--|     |                                     |\n`,
+		`        |-----${b2}				    |\n`,
+		`  ${s4}--|	                                        |\n`,
+		`                                                           |${c1}\n`,
+		`  ${s5}--|                                           |\n`,
+		`               |-----${b3}               |\n`,
+		`  ${s6}--|     |                                     |\n`,
+		`                     |----------${q2}|\n`,
+		`${s7}--|	  |\n`,
+		`               |-----${b4}\n`,
+		`${s8}--|\n`
 	);
 }
 
@@ -502,7 +504,9 @@ display_bracket(
 	'chil',
 	'bong',
 	'cron',
-	'flon'
+	'flon',
+	'gonk',
+	'jimmy'
 );
 /*
 competitors = create_competitors(names, letters, competitors);
